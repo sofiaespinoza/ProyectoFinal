@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-04-2020 a las 20:08:19
+-- Tiempo de generación: 21-04-2020 a las 20:25:43
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `carrito` (
   `Id` int(11) NOT NULL,
-  `IdCliente` int(11) NOT NULL,
+  `IdFactura` int(11) NOT NULL,
   `IdProducto` int(11) NOT NULL,
   `Cantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -47,19 +47,6 @@ CREATE TABLE `clientes` (
   `Direccion` text NOT NULL,
   `Correo` int(50) NOT NULL,
   `Contrasena` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `detallesfactura`
---
-
-CREATE TABLE `detallesfactura` (
-  `Id` int(11) NOT NULL,
-  `IdFactura` int(11) NOT NULL,
-  `IdProducto` int(11) NOT NULL,
-  `Precio` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -96,9 +83,7 @@ CREATE TABLE `productos` (
 -- Indices de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  ADD PRIMARY KEY (`Id`),
-  ADD KEY `RProductoC` (`IdProducto`),
-  ADD KEY `RClienteC` (`IdCliente`);
+  ADD PRIMARY KEY (`Id`);
 
 --
 -- Indices de la tabla `clientes`
@@ -108,20 +93,10 @@ ALTER TABLE `clientes`
   ADD KEY `Id` (`Id`);
 
 --
--- Indices de la tabla `detallesfactura`
---
-ALTER TABLE `detallesfactura`
-  ADD PRIMARY KEY (`Id`),
-  ADD KEY `RFacturaD` (`IdFactura`),
-  ADD KEY `RProductoD` (`IdProducto`);
-
---
 -- Indices de la tabla `factura`
 --
 ALTER TABLE `factura`
-  ADD PRIMARY KEY (`Id`),
-  ADD KEY `Id` (`Id`),
-  ADD KEY `RClientes` (`IdCliente`);
+  ADD PRIMARY KEY (`Id`);
 
 --
 -- Indices de la tabla `productos`
@@ -147,12 +122,6 @@ ALTER TABLE `clientes`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `detallesfactura`
---
-ALTER TABLE `detallesfactura`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
@@ -172,15 +141,8 @@ ALTER TABLE `productos`
 -- Filtros para la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  ADD CONSTRAINT `RClienteC` FOREIGN KEY (`IdCliente`) REFERENCES `clientes` (`Id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `RClienteC` FOREIGN KEY (`IdFactura`) REFERENCES `clientes` (`Id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `RProductoC` FOREIGN KEY (`IdProducto`) REFERENCES `productos` (`Id`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `detallesfactura`
---
-ALTER TABLE `detallesfactura`
-  ADD CONSTRAINT `RFacturaD` FOREIGN KEY (`IdFactura`) REFERENCES `factura` (`Id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `RProductoD` FOREIGN KEY (`IdProducto`) REFERENCES `productos` (`Id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `factura`
