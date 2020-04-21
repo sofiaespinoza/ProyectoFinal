@@ -11,6 +11,8 @@
   *
   * @author sespi
   */
+ require_once("Model/Connection.php");
+
  class Producto {
 
      private $idProducto;
@@ -113,6 +115,15 @@
              error_log("ERROR: " . $ex->getMessage());
          }
          return $list;
+     }
+
+     public function getAttribute($smth) {
+         try {
+             return $this->$smth;
+         } catch (Exception $ex) {
+             error_log("Error:" . $ex->getMessage() . " in function" . __FUNCTION__ . " at file" . __FILE__);
+         }
+         return NULL;
      }
 
  }
