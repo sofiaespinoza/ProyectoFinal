@@ -11,32 +11,24 @@
   *
   * @author sespi
   */
- class Cliente {
+ class Usuario {
 
      public $correo;
      private $contrasena;
      public $nombre;
      public $telefono;
      public $direccion;
-     private $idCliente;
+     public $rol;
+     private $idUsuario;
 
-     /**
-      * 
-      * @param string $pcorreo
-      * @param string $pcontrasena
-      * @param string $pnombre
-      * @param string $ptelefono
-      * @param string $pdireccion
-      * @param int $pidCliente
-      * 
-      */
-     public function __construct($pcorreo = "", $pcontrasena = "", $pnombre = "", $ptelefono = "", $pdireccion = "", $pidCliente = 0) {
+     public function __construct($pcorreo = "", $pcontrasena = "", $pnombre = "", $ptelefono = "", $pdireccion = "", $prol = 0, $pidUsuario = 0) {
          $this->correo = $pcorreo;
          $this->contrasena = $pcontrasena;
          $this->nombre = $pnombre;
          $this->telefono = $ptelefono;
          $this->direccion = $pdireccion;
-         $this->idCliente = $pidCliente;
+         $this->rol = $prol;
+         $this->idUsuario = $pidUsuario;
      }
 
      /**
@@ -48,7 +40,7 @@
              $conect = new Connection();
              $pdo = $conect->OpenConnection();
              $sql = "INSERT INTO clientes (Nombre, Telefono, Direccion, Correo, Contrasena) "
-                     . "VALUES ('" . $this->nombre . "','" . $this->telefono . "','" . $this->direccion . "','" . $this->correo . "','" . $this->contrasena . "')";
+                     . "VALUES ('" . $this->nombre . "','" . $this->telefono . "','" . $this->direccion . "','" . $this->correo . "','" . $this->contrasena . "','" . $this->rol . "')";
              return $pdo->query($sql);
          } catch (Exception $ex) {
              error_log("ERROR: " . $ex->getMessage());
@@ -73,22 +65,22 @@
              }
              $result = $pdo->query($sql);
              while ($row = $result->fetch()) {
-                 $rows[] = new Cliente($row["Nombre"], $row["Telefono"], $row["Direccion"], $row["Correo"], $row["Contrasena"], $row["Id"]);
+                 $rows[] = new Usuario($row["Nombre"], $row["Telefono"], $row["Direccion"], $row["Correo"], $row["Contrasena"], $row["Rol"], $row["Id"]);
              }
          } catch (Exception $ex) {
              
          }
          return $rows;
      }
-     
-      public function getAttribute($smth) {
-        try {
-            return $this->$smth;
-        } catch (Exception $ex) {
-            error_log("Error:" . $ex->getMessage() . " in function" . __FUNCTION__ . " at file" . __FILE__);
-        }
-        return NULL;
-    }
+
+     public function getAttribute($smth) {
+         try {
+             return $this->$smth;
+         } catch (Exception $ex) {
+             error_log("Error:" . $ex->getMessage() . " in function" . __FUNCTION__ . " at file" . __FILE__);
+         }
+         return NULL;
+     }
 
  }
  

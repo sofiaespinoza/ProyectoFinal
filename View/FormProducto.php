@@ -19,8 +19,11 @@
             <input class="form-control" value="<?php echo (isset($nuevoProducto)) ? $nuevoProducto->precio : "" ?>" 
                    type="text" name="Precio" placeholder="Escriba nombre">
         </div>
-
-
+        <div class="form-group">
+            <label for="title">Añadir Imagen</label>
+            <input  name="Imagen" id="Imagen" value="<?php echo (isset($nuevoProducto)) ? '<img src="img/ ' . $row['Imagen'] . ' " ' : "" ?>" 
+                    type="file">
+        </div>
         <input type="submit" class="btn btn-success" value="Enviar">
         <?php
          if (isset($nuevoProducto)) {
