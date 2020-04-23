@@ -4,12 +4,19 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/ProyectoFinal/View/ViewProducto.php</file>
-            <file>file:/C:/xampp/htdocs/ProyectoFinal/View/FormProducto.php</file>
-            <file>file:/C:/xampp/htdocs/ProyectoFinal/View/FormUsuario.php</file>
-            <file>file:/C:/xampp/htdocs/ProyectoFinal/Controller/insertUser.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectoFinal/Model/Cliente.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectoFinal/Model/Connection.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectoFinal/View/LoginUsuario.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectoFinal/Controller/signOut.php</file>
             <file>file:/C:/xampp/htdocs/ProyectoFinal/index.php</file>
-            <file>file:/C:/xampp/htdocs/ProyectoFinal/Model/Usuario.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectoFinal/Controller/getProducto.php</file>
             <file>file:/C:/xampp/htdocs/ProyectoFinal/Controller/insertProducto.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectoFinal/Model/Usuario.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectoFinal/Controller/insertCliente.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectoFinal/View/FormProducto.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectoFinal/Controller/loginUsuario.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectoFinal/View/FormCliente.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectoFinal/Controller/updateProducto.php</file>
             <file>file:/C:/xampp/htdocs/ProyectoFinal/Model/Carrito.php</file>
             <file>file:/C:/xampp/htdocs/ProyectoFinal/Model/Producto.php</file>
         </group>

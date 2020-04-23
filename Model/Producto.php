@@ -77,9 +77,11 @@
              $pdo = $conect->OpenConnection();
              $sql = "SELECT * FROM productos";
              if ($name) {
-                 $sql .= " WHERE nombre LIKE '%" . $name . "%'";
+                 $sql .= " WHERE nombre LIKE '%" . $name . "%' ORDER BY nombre";
              }
+
              $result = $pdo->query($sql);
+             print_r($result);
              while ($row = $result->fetch()) {
                  $rows[] = new Producto($row["id"], $row["nombre"], $row["detalle"], $row["precio"], $row["imagen"]);
              }
@@ -87,6 +89,25 @@
              error_log("Error:" . $ex->getMessage() . " in function" . __FUNCTION__ . " at file" . __FILE__);
          }
          return $rows;
+     }
+
+     public function selectAllNames($name = "") {
+         $list = [];
+         try {
+             $conect = new Connection();
+             $pdo = $conect->OpenConnection();
+             $sql = "SELECT * FROM productos ";
+             if ($name) {
+                 $sql .= " WHERE nombre LIKE '%" . $name . "%' ORDER BY nombre";
+             }
+             $result = $pdo->query($sql);
+             while ($row = $result->fetch()) {
+                 $list[] = new Producto($row["id"], $row["nombre"], $row["detalle"], $row["precio"], $row["imagen"]);
+             }
+         } catch (Exception $ex) {
+             error_log("ERROR: " . $ex->getMessage());
+         }
+         return $list;
      }
 
      public function selectAll() {

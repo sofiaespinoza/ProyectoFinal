@@ -3,6 +3,10 @@
         <div class="row">
             <div id="homeColL" class="col-md-3"></div>
             <div id="CommentPost" class="col-md-6">
+                <form class="form-inline my-2 my-lg-0" action="?c=buscarProducto" method="POST">
+                    <input class="form-control mr-sm-2" name="buscador" type="search" placeholder="Búsqueda" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
                 <div id="homeTitle" class="page-header">
                     <h1>
                         <small>Productos</small>
