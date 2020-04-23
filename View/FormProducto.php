@@ -27,12 +27,14 @@
                     <input  name="Imagen" id="Imagen" value="<?php echo (isset($nuevoProducto)) ? '<img src="img/ ' . $row['Imagen'] . ' " ' : "" ?>" 
                             type="file">
                 </div>
-        <input type="submit" class="btn btn-success" value="Enviar">
-        <?php
-         if (isset($nuevoProducto)) {
-             echo '<input type="hidden"value="' . $nuevoProducto->getAttribute("idProducto") . '" name="idProducto">';
-         }
-        ?>
-    </form> 
+                <input type="submit" class="btn btn-success" value="Enviar">
+                <?php
+                 if (isset($nuevoProducto)) {
+                     echo '<input type="hidden"value="' . $nuevoProducto->getAttribute("idProducto") . '" name="idProducto">';
+                 }
+                ?>
+                </form> 
 
+            </div>
+        </div>
 </div>
