@@ -1,14 +1,20 @@
 <?php
 
  include_once("Model/Producto.php");
+
+ if (isset($_GET['id'])) {
+     $nuevoProducto = new Producto();
+     $nuevoProducto = $nuevoProducto->selectId($_GET['id'])[0];
+     include 'View/FormProducto.php';
+ }
  if ($_POST) {
 
-     ///// CHORRO DE CODIGO STARTS HERE///
+     ////CHORRO DE CODIGO STARTS HERE/////
      $target_dir = "img/";
      $target_file = $target_dir . basename($_FILES["Imagen"]["name"]);
      $uploadOk = 1;
      $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-// Check if image file is a actual image or fake image
+     // Check if image file is a actual image or fake image
      if (isset($_POST)) {
          $check = getimagesize($_FILES["Imagen"]["tmp_name"]);
          if ($check !== false) {
@@ -24,20 +30,20 @@
          echo "Sorry, file already exists.";
          $uploadOk = 0;
      }
-// Check file size
+     // Check file size
      if ($_FILES["Imagen"]["size"] > 500000) {
          echo "Sorry, your file is too large.";
          $uploadOk = 0;
      }
-// Allow certain file formats
+     // Allow certain file formats
      if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
          echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
          $uploadOk = 0;
      }
-// Check if $uploadOk is set to 0 by an error
+     // Check if $uploadOk is set to 0 by an error
      if ($uploadOk == 0) {
          echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
+         // if everything is ok, try to upload file
      } else {
          if (move_uploaded_file($_FILES["Imagen"]["tmp_name"], $target_file)) {
              echo "The file " . basename($_FILES["Imagen"]["name"]) . " has been uploaded.";
@@ -45,11 +51,12 @@
              echo "Sorry, there was an error uploading your file.";
          }
      }
-     /////////
-     $nuevoProducto = new Producto(NULL, $_POST["Nombre"], $_POST["Detalle"], $_POST["Precio"], $target_file);
-     $nuevoProducto->insert();
-     include "View/FormProducto.php";
- } else {
-
-     include "View/FormProducto.php";
+//////////
+     $currentProducto = new Producto($_POST["idProducto"], $_POST["Nombre"], $_POST["Detalle"], $_POST["Precio"], $target_file);
+     if ($currentProducto->update()) {
+         $listaProductos = [$currentProducto];
+         include "View/ViewProducto.php";
+     } else {
+         echo 'NEL';
+     }
  }

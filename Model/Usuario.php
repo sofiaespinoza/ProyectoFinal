@@ -1,76 +1,43 @@
 <?php
 
- /*
-  * To change this license header, choose License Headers in Project Properties.
-  * To change this template file, choose Tools | Templates
-  * and open the template in the editor.
-  */
+ require_once("Model/Connection.php");
 
- /**
-  * Description of Cliente
-  *
-  * @author sespi
-  */
  class Usuario {
 
-     public $correo;
-     private $contrasena;
-     public $nombre;
-     public $telefono;
-     public $direccion;
+     public $usuario;
+     public $contrasena;
      public $rol;
      private $idUsuario;
 
-     public function __construct($pcorreo = "", $pcontrasena = "", $pnombre = "", $ptelefono = "", $pdireccion = "", $prol = 0, $pidUsuario = 0) {
-         $this->correo = $pcorreo;
+     /**
+      * 
+      * @param string $pusuario
+      * @param string $pcontrasena
+      * @param int $prol
+      * @param int $pidUsuario
+      */
+     public function __construct($pusuario = "", $pcontrasena = "", $prol = 0, $pidUsuario = 0) {
+         $this->usuario = $pusuario;
          $this->contrasena = $pcontrasena;
-         $this->nombre = $pnombre;
-         $this->telefono = $ptelefono;
-         $this->direccion = $pdireccion;
          $this->rol = $prol;
          $this->idUsuario = $pidUsuario;
      }
 
-     /**
-      * 
-      * @return boolean
-      */
-     public function insert() {
-         try {
-             $conect = new Connection();
-             $pdo = $conect->OpenConnection();
-             $sql = "INSERT INTO clientes (Nombre, Telefono, Direccion, Correo, Contrasena) "
-                     . "VALUES ('" . $this->nombre . "','" . $this->telefono . "','" . $this->direccion . "','" . $this->correo . "','" . $this->contrasena . "','" . $this->rol . "')";
-             return $pdo->query($sql);
-         } catch (Exception $ex) {
-             error_log("ERROR: " . $ex->getMessage());
-         }
-         return FALSE;
-     }
-
-     /**
-      * 
-      * @param int $id
-      * @return \Cliente
-      * 
-      */
-     public function selectId($id = 0) {
+     public function selectName($nn = "") {
          $rows = [];
          try {
              $conect = new Connection();
              $pdo = $conect->OpenConnection();
-             $sql = "SELECT * FROM clientes";
-             if ($id) {
-                 $sql .= " WHERE id = '" . $id . "'";
-             }
+             $sql = "SELECT * FROM usuarios WHERE usuario = '" . $nn . "'";
+
              $result = $pdo->query($sql);
              while ($row = $result->fetch()) {
-                 $rows[] = new Usuario($row["Nombre"], $row["Telefono"], $row["Direccion"], $row["Correo"], $row["Contrasena"], $row["Rol"], $row["Id"]);
+                 $rows[] = new Usuario($row["usuario"], $row["contrasena"], $row["rol"], $row["id"]);
              }
          } catch (Exception $ex) {
              
          }
-         return $rows;
+         return $rows[0];
      }
 
      public function getAttribute($smth) {

@@ -1,16 +1,5 @@
 <?php
 
- /*
-  * To change this license header, choose License Headers in Project Properties.
-  * To change this template file, choose Tools | Templates
-  * and open the template in the editor.
-  */
-
- /**
-  * Description of Producto
-  *
-  * @author sespi
-  */
  require_once("Model/Connection.php");
 
  class Producto {
@@ -26,7 +15,8 @@
       * @param int $pidProducto
       * @param string $pnombre
       * @param string $pdetalle
-      * @param float $pprecio
+      * @param int $pcategoria
+      * @param double $pprecio
       * @param string $pimagen
       */
      public function __construct($pidProducto = 0, $pnombre = "", $pdetalle = "", $pprecio = 0, $pimagen = "") {
@@ -38,14 +28,15 @@
      }
 
      /**
-      * 
+      * Inserta producto
       * @return boolean
       */
      public function insert() {
          try {
              $conect = new Connection();
              $pdo = $conect->OpenConnection();
-             $sql = "INSERT INTO productos (Nombre, Detalle, Precio, Imagen) "
+
+             $sql = "INSERT INTO productos (nombre, detalle, precio, imagen) "
                      . "VALUES ('" . $this->nombre . "','" . $this->detalle . "','" . $this->precio . "','" . $this->imagen . "')";
              return $pdo->query($sql);
          } catch (Exception $ex) {
@@ -71,10 +62,10 @@
              }
              $result = $pdo->query($sql);
              while ($row = $result->fetch()) {
-                 $rows[] = new Producto($row["Id"], $row["Nombre"], $row["Detalle"], $row["Precio"], $row["Imagen"]);
+                 $rows[] = new Producto($row["id"], $row["nombre"], $row["detalle"], $row["precio"], $row["imagen"]);
              }
          } catch (Exception $ex) {
-             
+             error_log("Error:" . $ex->getMessage() . " in function" . __FUNCTION__ . " at file" . __FILE__);
          }
          return $rows;
      }
@@ -86,15 +77,14 @@
              $pdo = $conect->OpenConnection();
              $sql = "SELECT * FROM productos";
              if ($name) {
-                 /*                  * Hay que hacer el LIKE de bases de datos */
-                 $sql .= " WHERE nombre = '" . $name . "'";
+                 $sql .= " WHERE nombre LIKE '%" . $name . "%'";
              }
              $result = $pdo->query($sql);
              while ($row = $result->fetch()) {
-                 $rows[] = new Producto($row["Id"], $row["Nombre"], $row["Detalle"], $row["Precio"], $row["Imagen"]);
+                 $rows[] = new Producto($row["id"], $row["nombre"], $row["detalle"], $row["precio"], $row["imagen"]);
              }
          } catch (Exception $ex) {
-             
+             error_log("Error:" . $ex->getMessage() . " in function" . __FUNCTION__ . " at file" . __FILE__);
          }
          return $rows;
      }
@@ -109,12 +99,24 @@
              $result = $pdo->query($sql);
              while ($row = $result->fetch()) {
 
-                 $list[] = new Producto($row["Id"], $row["Nombre"], $row["Detalle"], $row["Precio"], $row["Imagen"]);
+                 $list[] = new Producto($row["id"], $row["nombre"], $row["detalle"], $row["precio"], $row["imagen"]);
              }
          } catch (Exception $ex) {
              error_log("ERROR: " . $ex->getMessage());
          }
          return $list;
+     }
+
+     public function update() {
+         try {
+             $conect = new Connection();
+             $pdo = $conect->openConnection();
+             $query = "UPDATE productos SET nombre = '$this->nombre', detalle = '$this->detalle', precio = '$this->precio', imagen = '$this->imagen'  WHERE id = '" . $this->getAttribute("idProducto") . "'";
+             return $pdo->query($query);
+         } catch (Exception $exc) {
+             error_log("Error en la Funcion" . __FUNCTION__ . ", mensaje:" . $exc->getMessage());
+         }
+         return FALSE;
      }
 
      public function getAttribute($smth) {
