@@ -14,6 +14,7 @@
                         <a class="btn btn-primary btn-sm" href="?c=loginUsuario" role="button">Log in babe</a>
                         <a class="btn btn-primary btn-sm" href="?c=insertCliente" role="button">Insertar Cliente</a>
                         <a class="btn btn-primary btn-sm" href="?c=signOut" role="button">Log Out Babe</a>
+			<a class="btn btn-primary btn-sm" href="?c=sendContactenos" role="button">Contactenos</a>
                         <br>
                     </h1>
 
