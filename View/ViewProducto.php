@@ -20,29 +20,29 @@
 
                 </div>
                 <?php if (count($listaProductos)) { ?>
-                     <?php foreach ($listaProductos as $producto) { ?>
-                         <div class="container-fluid-publicaciones">
-                             <img class="align-self-center mr-3" src="<?php echo '' . $producto->imagen . ''; ?>" alt="Generic placeholder image" height="200" width="200">
-                             <h4><?php echo $producto->nombre; ?></h4>
-                             <h3><?php echo $producto->precio; ?></h3>
-                             <form name="form" action="?c=getProducto" method="POST">
-                                 <input type="hidden" name="idProducto" id="idProducto" value="<?php echo '' . $producto->getAttribute("idProducto") . ''; ?>">
-                                 <div class="form-group col-md-2">
-                                     <label for="cantidad">Cantidad</label>
-                                     <input type="text" class="form-control" name="cantidad" value="1">
-                                 </div>
-                                 <a class="btn btn-outline-warning" role="button" href="?c=carrito&id=<?php echo $producto->getAttribute("idProducto"); ?>">Agregar</a>
+                    <?php foreach ($listaProductos as $producto) { ?>
+                      <div class="container-fluid-publicaciones">
+                          <img class="align-self-center mr-3" src="<?php echo '' . $producto->imagen . ''; ?>" alt="Generic placeholder image" height="200" width="200">
+                          <h4><?php echo $producto->nombre; ?></h4>
+                          <h3><?php echo $producto->precio; ?></h3>
+                          <form name="form" action="?c=getProducto" method="POST">
+                              <input type="hidden" name="idProducto" id="idProducto" value="<?php echo '' . $producto->getAttribute("idProducto") . ''; ?>">
+                              <div class="form-group col-md-2">
+                                  <label for="cantidad">Cantidad</label>
+                                  <input type="text" class="form-control" name="cantidad" value="1">
+                              </div>
+                              <a class="btn btn-outline-warning" role="button" href="?c=carrito&id=<?php echo $producto->getAttribute("idProducto"); ?>">Agregar</a>
 
 
-                             </form>
-                         </div>
-                     <?php } ?>
-                 <?php } else { ?>
-                     <b>Sin productos...</b>
-                 <?php } ?>
+                          </form>
+                      </div>
+                    <?php } ?>
+                  <?php } else { ?>
+                    <b>Sin productos...</b>
+                  <?php } ?>
 
             </div>
-            <div id="homeColR" class="col-md-3"><?php print_r($_SESSION['carrito']); ?></div>
+            <div id="homeColR" class="col-md-3"></div>
         </div>
     </div>
 </body>

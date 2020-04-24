@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/xampp/htdocs/ProyectoFinal/View/ViewProducto.php</file>
             <file>file:/C:/xampp/htdocs/ProyectoFinal/Controller/insertCliente.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectoFinal/CSS/Styles.css</file>
             <file>file:/C:/xampp/htdocs/ProyectoFinal/Controller/buscarProducto.php</file>
             <file>file:/C:/xampp/htdocs/ProyectoFinal/Controller/getProducto.php</file>
             <file>file:/C:/xampp/htdocs/ProyectoFinal/Controller/loginUsuario.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectoFinal/Controller/updateProducto.php</file>
             <file>file:/C:/xampp/htdocs/ProyectoFinal/Controller/insertProducto.php</file>
             <file>file:/C:/xampp/htdocs/ProyectoFinal/Controller/carrito.php</file>
             <file>file:/C:/xampp/htdocs/ProyectoFinal/View/ViewCarrito.php</file>
