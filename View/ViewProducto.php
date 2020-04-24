@@ -15,6 +15,7 @@
                         <a class="btn btn-primary btn-sm" href="?c=insertCliente" role="button">Insertar Cliente</a>
                         <a class="btn btn-primary btn-sm" href="?c=signOut" role="button">OUT</a>
                         <a class="btn btn-primary btn-sm" href="?c=sendContactenos" role="button">Contactenos</a>
+                        <a class="btn btn-primary btn-sm" href="?c=deleteCarrito" role="button">Borrar Carrito</a>
                         <br>
                     </h1>
 
