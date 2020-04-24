@@ -14,6 +14,7 @@
           'producto' => $selectedProducto,
           'cantidad' => isset($_POST['cantidad']) ? $_POST['cantidad'] : 1,
         );
+        print_r($itemArray);
         $carrito [] = $itemArray;
       } else {
         echo'producto ya existe';
@@ -24,6 +25,7 @@
         'cantidad' => isset($_POST['cantidad']) ? $_POST['cantidad'] : 1,
       ));
       $carrito [] = $itemArray;
+      print_r($itemArray);
     }
     $_SESSION['carrito'] = serialize($carrito);
     include 'View/ViewCarrito.php';

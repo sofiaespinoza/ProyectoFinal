@@ -33,8 +33,6 @@
                                   <input type="text" class="form-control" name="cantidad" value="1">
                               </div>
                               <a class="btn btn-outline-warning" role="button" href="?c=carrito&id=<?php echo $producto->getAttribute("idProducto"); ?>">Agregar</a>
-
-
                           </form>
                       </div>
                     <?php } ?>
