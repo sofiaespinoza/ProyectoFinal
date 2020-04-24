@@ -11,41 +11,22 @@
                     <a class="btn btn-primary btn-sm" href="?c=sendContactenos" role="button">Contactenos</a>
                     <br>
                 </h1>
-                <?php if (!empty($_SESSION['carrito'])) { ?>
-                     <?php $precioTotal = 0; ?>
-                     <?php foreach ($_SESSION['carrito'] as $key => $values) { ?>
-
-
-
+                <?php if (isset($_SESSION['carrito'])) { ?>
+                     <?php $precioTotal = 0;?>
+                     <?php foreach (unserialize($_SESSION['carrito']) as $values) { ?>
                          <div class="container-fluid-publicaciones">
-                             <img class="align-self-center mr-3" src="<?php echo '' . $values['producto']->imagen . ''; ?>" alt="Generic placeholder image" height="200" width="200">
+                             <img class="align-self-center mr-3" src="<?php echo '' . $values['producto']->imagen . ''; ?>" height="200" width="200">
                              <h4><?php echo $values['producto']->nombre; ?></h4>
                              <h3><?php echo $values['producto']->precio; ?></h3>
                              <h3><?php echo $values['cantidad']; ?></h3>
                              <h3><?php echo number_format($values['cantidad'] * $values['producto']->precio, 2); ?></h3> 
-                             <form name="form" action="?c=getProducto" method="POST">
-                                 <input type="hidden" name="idProducto" id="idProducto" value="<?php echo '' . $producto->getAttribute("idProducto") . ''; ?>">
-                                 <div class="form-group col-md-2">
-                                     <label for="cantidad">Cantidad</label>
-                                     <input type="text" class="form-control" name="cantidad" value="1">
-                                 </div>
-                                 <a class="btn btn-outline-warning" role="button" href="?c=carrito&id=<?php echo $producto->getAttribute("idProducto"); ?>">Agregar</a>
-
-
-                             </form>
+                             <h3>TOTAL<?php echo $precioTotal = $precioTotal + ($values['cantidad'] * $values['producto']->precio); ?></h3>
                          </div>
                      <?php } ?>
                  <?php } else { ?>
-                     <b>Error al desplegar</b>
+                     <b>NEL</b>
                  <?php } ?>
-
-
-
-            </div>
-
-
-
-
+                    </div>
 
         </div>
         <div class="col-md-4">

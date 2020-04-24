@@ -11,9 +11,9 @@
                     <h1>
                         <small>Productos</small>
                         <a class="btn btn-primary btn-sm" href="?c=insertProducto" role="button">Insertar Producto</a>
-                        <a class="btn btn-primary btn-sm" href="?c=loginUsuario" role="button">Log in babe</a>
+                        <a class="btn btn-primary btn-sm" href="?c=loginUsuario" role="button">LOG</a>
                         <a class="btn btn-primary btn-sm" href="?c=insertCliente" role="button">Insertar Cliente</a>
-                        <a class="btn btn-primary btn-sm" href="?c=signOut" role="button">Log Out Babe</a>
+                        <a class="btn btn-primary btn-sm" href="?c=signOut" role="button">OUT</a>
                         <a class="btn btn-primary btn-sm" href="?c=sendContactenos" role="button">Contactenos</a>
                         <br>
                     </h1>

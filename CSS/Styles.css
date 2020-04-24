@@ -4,14 +4,14 @@
     font-family: Century Gothic;
 }
 
-body{
+/*body{
     background-color: #ededed;
-}
+}*/
 
 form{
     width: 700px;
     margin: auto;
-    background-color: #4bf;
+/*    background-color: #4bf;*/
     margin-top: 100px;
     margin-bottom: 5px;
 }
