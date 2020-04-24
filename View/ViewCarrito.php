@@ -23,7 +23,10 @@
                                       <div class="media-body">
                                           <h4><?php echo $values['producto']->nombre; ?></h4>
                                           <h3><?php echo $values['producto']->precio; ?></h3>
-                                          <h3><?php echo $values['cantidad']; ?></h3>
+                                          <div class="form-group col-md-2">
+                                              <label for="cantidad">Cantidad</label>
+                                              <input type="text" class="form-control" name="cantidad" value="<?php echo (isset($values['cantdidad'])) ? $values['cantdidad'] : "1"; ?>">
+                                          </div>
                                           <a class="btn btn-outline-danger" role="button" href="?c=deleteItem&id=<?php echo $values['producto']->getAttribute("idProducto"); ?>">Eliminar</a>
                                       </div>
                                   </div>
