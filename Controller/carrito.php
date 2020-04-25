@@ -22,7 +22,7 @@
     } else {
       $itemArray = (array(
         'producto' => $selectedProducto,
-        'cantidad' => isset($_POST['cantidad']) ? $_POST['cantidad'] : 1,
+        'cantidad' => isset($_POST['cantidad']) ? $_POST['cantidad'] : 1
       ));
       $carrito [] = $itemArray;
       print_r($itemArray);

@@ -30,7 +30,7 @@
                               <input type="hidden" name="idProducto" id="idProducto" value="<?php echo '' . $producto->getAttribute("idProducto") . ''; ?>">
                               <div class="form-group col-md-2">
                                   <label for="cantidad">Cantidad</label>
-                                  <input type="text" class="form-control" name="cantidad" value="1">
+                                  <input type="text" class="form-control" name="cantidad" value="2">
                               </div>
                               <a class="btn btn-outline-warning" role="button" href="?c=carrito&id=<?php echo $producto->getAttribute("idProducto"); ?>">Agregar</a>
                           </form>
