@@ -10,7 +10,7 @@
         <a class="nav-link" href="?c=getProducto">Productos<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="?c=carrito">Carrito_Compra</a>
+          <a class="nav-link" href="?c=ViewCarrito">Carrito_Compra</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="?c=sendContactenos">Contactenos</a>

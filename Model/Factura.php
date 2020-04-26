@@ -33,15 +33,11 @@
         $pdo = $conect->OpenConnection();
         $sql = "INSERT INTO facturas (cliente, total) "
           . "VALUES ('" . $this->cliente . "','" . $this->total . "')";
-
         //valido si sirve o no
         $var = $pdo->query($sql);
-
-        //recupero last ID y  lo seteo a la factura
-        $this->idFactura = $pdo->lastInsertId();
-        
         if ($var) {
-          
+          //recupero last ID y  lo seteo a la factura
+          $this->idFactura = $pdo->lastInsertId();
           //ingreso cada detalle a mi factura
           foreach ($this->detalle as $values) {
             $values->insertDetalle($pdo->lastInsertId());

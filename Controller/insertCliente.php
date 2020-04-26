@@ -2,7 +2,6 @@
 
   include_once("Model/Producto.php");
   include_once("Model/Cliente.php");
-  $cliente = new Cliente();
   $nuevoProducto = new Producto();
   $listaProductos = $nuevoProducto->selectAll();
   if (isset($_GET['total'])) {
@@ -10,12 +9,13 @@
     $_SESSION['total'] = serialize($total);
   }
   if ($_POST) {
-    if (empty($_SESSION['cliente'])) {
-      $cliente = new Cliente($_POST["correo"], $_POST["nombre"], $_POST["direccion"], NULL);
-      if ($cliente->insert()) {
-        $_SESSION['cliente'] = serialize($cliente);
-        
-      }
+    $cliente = new Cliente($_POST["correo"], $_POST["nombre"], $_POST["direccion"], NULL);
+    print_r($cliente);
+    if ($cliente->insert()) {
+      unset($_SESSION['cliente']);
+      $_SESSION['cliente'] = serialize($cliente);
+    } else {
+      echo"ECHO";
     }
     include "View/ViewFactura.php";
   } else {

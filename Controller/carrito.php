@@ -1,12 +1,10 @@
 <?php
 
   require_once("Model/Producto.php");
-  if (isset($_GET['id'])) {
-    $selectedProducto = new Producto();
-    $selectedProducto = $selectedProducto->selectId($_GET['id'])[0];
-  }
+  $selectedProducto = new Producto();
   if (isset($_POST)) {
     $carrito = [];
+    $selectedProducto = $selectedProducto->selectId($_POST['idProducto'])[0];
     if (isset($_SESSION['carrito'])) {
       $carrito = unserialize($_SESSION['carrito']);
       $itemArrayId = array_column($carrito, 'producto');

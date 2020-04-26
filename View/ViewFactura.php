@@ -49,9 +49,7 @@
                     </tr>
                 </tbody>
             </table> 
-            <button type="button" class="btn btn-success btn-block">
-                Button
-            </button>
+            <a class="btn btn-success btn-block" role="button" href="?c=factura">PAGAR</a>
         </div>
         <div class="col-md-2">
         </div>

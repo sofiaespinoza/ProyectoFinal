@@ -23,20 +23,19 @@
                           <img class="align-self-center mr-3" src="<?php echo '' . $producto->imagen . ''; ?>" alt="Generic placeholder image" height="200" width="200">
                           <h4><?php echo $producto->nombre; ?></h4>
                           <h3><?php echo $producto->precio; ?></h3>
-                          <form name="form" action="?c=getProducto" method="POST">
+                          <form name="form" action="?c=carrito" method="POST" id="<?php echo 'form' . $producto->getAttribute("idProducto") . ''; ?>">
                               <input type="hidden" name="idProducto" id="idProducto" value="<?php echo '' . $producto->getAttribute("idProducto") . ''; ?>">
                               <div class="form-group col-md-2">
                                   <label for="cantidad">Cantidad</label>
-                                  <input type="text" class="form-control" name="cantidad" value="2">
+                                  <input type="text" class="form-control" name="cantidad" value="1">
                               </div>
-                              <a class="btn btn-outline-warning" role="button" href="?c=carrito&id=<?php echo $producto->getAttribute("idProducto"); ?>">Agregar</a>
+                              <a class="btn btn-outline-warning" role="button" href="javascript:{}" onclick="document.getElementById('<?php echo 'form' . $producto->getAttribute("idProducto"). ''; ?>').submit();">Agregar</a>
                           </form>
                       </div>
                     <?php } ?>
                   <?php } else { ?>
                     <b>Sin productos...</b>
                   <?php } ?>
-
             </div>
             <div id="homeColR" class="col-md-3"></div>
         </div>
