@@ -8,10 +8,10 @@
     background-color: #ededed;
 }*/
 
-form{
+.formCorreo{
     width: 700px;
     margin: auto;
-/*    background-color: #4bf;*/
+    background-color: #4bf;
     margin-top: 100px;
     margin-bottom: 5px;
 }
@@ -39,5 +39,25 @@ textarea{
     min-height: 100px;
     max-height: 300px;
     border: none;
-    
+}
+
+.carousel-inner img{
+    width: 100%;
+    max-height: 460px;
+}
+
+.carousel-inner {
+    height: 460px;
+}
+
+footer{
+    bottom: 0;
+    background-color: palevioletred;
+    width: 100%;
+    color: white;
+    padding: 20px 20px 20px 20px;
+}
+footer img {
+    width: 15px; 
+    height: auto;
 }

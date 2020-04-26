@@ -1,4 +1,5 @@
 <?php
+
   require_once("Model/Producto.php");
   if (isset($_GET['id'])) {
     $selectedProducto = new Producto();
