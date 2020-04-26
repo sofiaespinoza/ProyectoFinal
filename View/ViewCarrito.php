@@ -31,13 +31,14 @@
                                   </div>
                               </div>
                           </div> </li>
+                      <h3>TOTAL <?php echo $precioTotal = $precioTotal + ($values['cantidad'] * $values['producto']->precio); ?></h3>
                     <?php } ?>
-                    <h3>TOTAL <?php echo $precioTotal = $precioTotal + ($values['cantidad'] * $values['producto']->precio); ?></h3>
 
+                    <a class="btn btn-outline-danger" role="button" href="?c=insertCliente&total=<?php echo $precioTotal; ?>">PAGAR</a>
                   <?php } else { ?>
                     <b>NEL</b>
                   <?php } ?>
-                <a class="btn btn-outline-danger" role="button" href="?c=insertCliente&total=<?php echo $precioTotal; ?>">PAGAR</a>
+
             </ul>
         </div>
         <div class="col-md-3"></div>
