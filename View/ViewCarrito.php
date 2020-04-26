@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-         <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
         <div class="col-md-6">
             <div id="homeTitle" class="page-header">
                 <h1>
@@ -37,7 +37,7 @@
                   <?php } else { ?>
                     <b>NEL</b>
                   <?php } ?>
-                <a class="btn btn-outline-danger" role="button" href="?c=factura">COBRO</a> 
+                <a class="btn btn-outline-danger" role="button" href="?c=insertCliente&total=<?php echo $precioTotal; ?>">PAGAR</a>
             </ul>
         </div>
         <div class="col-md-3"></div>
